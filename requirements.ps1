@@ -1,6 +1,7 @@
 #  Leal Barrera, Nicolas Student ID: 011150100
 
 
+
 $mainMenu = "Main menu:
 ----------
 1) List files using a regex
@@ -8,7 +9,7 @@ $mainMenu = "Main menu:
 3) CPU & Memory Usage
 4) List running Processes
 5) EXIT"
-# Created a User friendly menu with all the available options.
+# Created a User friendly menu with all the available option.
 
 
 
