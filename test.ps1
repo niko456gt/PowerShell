@@ -10,7 +10,7 @@ $OUDN = (Get-ADOrganizationalUnit -Filter "Name -eq 'Finance' ")
 
 if ($Found) {
     try {
-        Remove-ADOrganizationalUnit -Identity $OUDN -Recursive
+        Remove-ADOrganizationalUnit -Identity $OUDN -Recursive -Confirm:$false
     }
     catch [System.DirectoryServices.DirectoryServicesPermission] {
         Write-Error " Not enought permissions to execute deletion"
@@ -26,7 +26,24 @@ if ($Found) {
 
 
 Write-Host " Creating OU Finance"
+New-ADOrganizationalUnit -Name "Finance" -Path "DC=consultingfirm, DC=com" -ProtectedFromAccidentalDeletion $false
 
+#------------------------------------------------------------------------------ part 1 
+
+
+$csv = "C:\Users\LabAdmin\Desktop\financePersonnel.csv"
+
+$Headers = @{
+    "First_Name" = "First Name"
+    "Last_Name" = "Last Name"
+    "samAccount" = "SamAccountName"
+    "City" = "City"
+    "Country" = "Country"
+ 
+
+
+
+}
 
 
 
