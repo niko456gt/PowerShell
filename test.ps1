@@ -38,7 +38,7 @@ foreach($User in $CSVUser){
     $LastName = $User.Last_Name
     $SamAcc = $User.samAccount
     try {
-        New-ADUser -SamAccountName $SamAcc -GivenName $FirstName -Surname $LastName -Path $OUDN
+        New-ADUser -GivenName $FirstName -Surname $LastName -SamAccountName $samAccount -Path $OUDN 
         
     }
     catch [System.Exception]{
