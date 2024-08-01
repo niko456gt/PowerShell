@@ -1,4 +1,4 @@
-$OUName = "OU=Finance, DC=consultingfirm, DC=com"
+# Leal Barrera, Nicolas. Student ID: 011150100
 
  
 
@@ -31,19 +31,24 @@ New-ADOrganizationalUnit -Name "Finance" -Path "DC=consultingfirm, DC=com" -Prot
 #------------------------------------------------------------------------------ part 1 
 
 
-$csv = "C:\Users\LabAdmin\Desktop\financePersonnel.csv"
+$CSVUser = Import-Csv "C:\Users\LabAdmin\Desktop\Requirements2\financePersonnel.csv"
 
-$Headers = @{
-    "First_Name" = "First Name"
-    "Last_Name" = "Last Name"
-    "samAccount" = "SamAccountName"
-    "City" = "City"
-    "Country" = "Country"
- 
-
-
+foreach($User in $CSVUser){
+    $FirstName = $User.First_Name
+    $LastName = $User.Last_Name
+    $SamAcc = $User.samAccount
+    try {
+        New-ADUser -SamAccountName $SamAcc -GivenName $FirstName -Surname $LastName -Path $OUDN
+        
+    }
+    catch [System.Exception]{
+        Write-Host "System error: $($_.Exception.Message)"
+    }catch{
+        Write-Host "Unable to register user: $FirstName, $LastName ."
+    }
 
 }
+
 
 
 
