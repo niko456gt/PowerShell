@@ -31,7 +31,7 @@ New-ADOrganizationalUnit -Name "Finance" -Path "DC=consultingfirm, DC=com" -Prot
 #------------------------------------------------------------------------------ part 1 
 
 
-$CSVUser = Import-Csv "C:\Users\LabAdmin\Desktop\Requirements2\financePersonnel.csv"  #load the CSV to memory
+$CSVUser = Import-Csv ".\financePersonnel.csv"  #load the CSV to memory
 
 foreach($User in $CSVUser){   #Create a data structure for all the variables that are going to be loaded to the ldap
     $FirstName = $User.First_Name
